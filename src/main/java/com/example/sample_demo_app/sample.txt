@@ -1,34 +1,102 @@
-	• Messaging Publishing and processing Service (PubSub)
-	• Allows fanout to millions of consumers (Email, HTTP, SQS, texting)
-	• Fully managed and durable with automatic scaling.
-	• Consists of topics and subscriptions
-	• Application to person or application to application
+Simple storage service (S3)
+
+	• Focused on general object storage on cloud
+	• Big files, small files, media files, source code 
+	• Scalable highly available, durable, supports integrations with aws.
+
+Core concepts:
+	• Buckets (should be globally unique) . Its a general purpose file systems 
+	• Objects (Contents which are stored inside the buckets)
+	• Access the data from buckets by 
+		○ By URL: (s3.amazonaws.com/<bucket_name>/<objectname>)
+		○ Programmatically  
+	
+S3 Storage Classes:
+	• Storage classes allow u to reduce costs, but with certain sacrifices.
+	• Ex: standard, intelligent, Infrequent access, Glacier
+	• Each tier has different pricing, latency, availability
+	• Ex Standard Tier(Hot Data) --> infrequent access --> Glacier (Cold data)
+	• Lifecycle rules automate the data movement process
+
+S3 Security:
+	• Public access is blocked by default
+	• Data Protection: highly durable and availability guarantees, encryption in transit and at rest.
+	• Access : access and resourced based controls with AWS IAM.
+	• Auditing: access logs, action based logs, alarms.
+	• Infrastructure security : built on top of AWS cloud infrastructure
+
+Advantages:
+Data Injestion Pipeline
+Analytics and dashboarding
+Event driven architectures
+
+Pricing:
+Dependent on storage class
+Three main factors: Storage, access (GET, POST, etc), transfer.
+
+
+
+
+
+
+	• Write code upload to lambda
+	• Automatic scaling
+	• Metering on the seconds, amount of time the code is computed.
 	
 	
-NAT Gateway:
-NAT sits in Public subnet. 
-Route table will be present in both Public and private subnet (It translates from destination to target)
+What is AWS lambda:
+	• Its just a service like EC2, EBS, Elastic load balancing
+	• We can run any given languages codes in lambda
+	• We can run functions
 
-Route 53: It’s a dns naming convention meant for having unique identifier for the application. Which helps In routing the network traffic.
-
-
-
-Load balancer:
-
-
-
-Waf: web application firewall:
-It allows u to monitor HTTP and HTTPS request that are forwarded to amazon cloudfornt, app load banancer or api gateway. It also allows you to control access to your content.
-It can be used for protection of services from other providers, but your app/content has to be served through the cloudfront.
-It can have configurations such as what IP addresses are allowed to make these request or what query string parameters need to be passed for the request to be allowed. 
-
-Basice level behaviours:
-Allow all the request excepti the ones you specify
-Block all th request except the ones you specify
-Count the request that match the properties that you specify
+Where is lambda used:
+	• Process images from upladed to s3 bucket.
+	S3 bucket --> Lambda function triggers --> Image processing 
+	• Analysing social media data 
+	Social Media added into Kinesis --> Lambda function triggers --> data stored to databases.
+	
+How lambda works ?
+Client sends request to lambda --> container --> container has code --> runs the appln --> performs computations.
 
 
-Proections against
-Sql inection, XSS, DDOS, 
+EC2: web service which aims to make life easier for developers by providing the secure and resizeable compute capacity in cloud.
+
+	• Amazon machine image : template to create a new vm like OS, volumes, etc.
+	• Instance type: it specifies the hardware, memory, GPU, storage, general purpose classifications 
+	• Configure instance: network, subnet, public IP, IAM roles, shutdown behaviour, bootstrap os etc.
+	• Adding storage: temporary storage, Elastic block storage, S3.
+	• Adding tags: 
+	• Configure the security group: actual firewall which control the access and flow of traffic.
+	• Review and launch.
+
+.pem file downloaded for private. Use putty to access the aws.
+
+ECS: elastic container service: Container management service.
+Availability of the appln and allows every user to scale containers when necessary.
+
+Schedules the placement of containers across your cluster.
+	• We can scale this through management console and also through the code.
+	• Migrates appln to cloud without changing the code. 
+
+Advantages :
+	• Improved Security : (IAM, encryption)
+	• Cost efficient 
+	• Extensible 
+	• Easily scalable
+	• Imporved compatibility 
+
+Container Image --> container registry (ECR, Docker Hub) <-- VPC (ECS)
+
+ECR(Container registry) similar to docker hub.
 
 
+Fargate (will be part of one availability zone).
+Tasks are launched using fargate.
+
+Fargate: It’s a compute engine in ECS that allows a user to launch containers without having to monitor the ecs cluster.
+
+Task as two components:
+	• ECS container instance: Its part of EC2 instance which runs amazon ECS container agent
+	• container agent: its responsible for the communication b/w ECS and instance. Also, provides the status of running containers.
+
+Elastic Network Interface: It’s a virutal interface network that can be connected to an instance.
