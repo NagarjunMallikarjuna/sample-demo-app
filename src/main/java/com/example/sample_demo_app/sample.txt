@@ -1,459 +1,89 @@
-What is CD:
-3 ideas:
-	• Repeatable and reliable:
-		a. Business idea --> working software --> feedback
-		b. Ideas --> technical,  organisational,  cultural performance
-		c. Different practices in the past:
-			i. Waterfall , iterative,  
-		d. Software is never a problem of production unlike manufacturing or any other industry.
-		e. We should optimize for learning and managing complexity
-		f. Inspect and adapt to change
-		g. CD builds on agile thinking 
-		h. CD adds better measurement and disciplined engineering
-		i. Agile thinking:
-			i. Transparency inspection and adaption
-			ii. Commitment focus openness respect courage
-		j. Limitations of scrum:
-			i. It doesn’t talks about engineering or any technical practices
-		k. Agile Engineering practices:
-			i. TDD
-			ii. CI
-			iii. Pair Programming
-			iv. Iterative and incremental design
-		l. CD is extended agile thinking, it uses effective engineering to derive better agile process.
-		m. CD is comprehensive approach to production of software. Repeatibilty and reliability of delivery
+Managed NoSQL database optimized for performance at scale.
+High availability and durability.
+Ideal for apps with Known access patterns.
+Access through APIs/ORMs and authorized through IAM.
+Integrates well with other AWS Services.
+Cost Effective usage based payment model.
 
 
-	• Science based:
-		○ Scientific method:
-			§ Characterization: make a guess based on experience and observation
-			§ Hypothesis: propose an explanation
-			§ Deduction: make a prediction based on your explanation
-			§ Experiment: test your prediction
-		○ Work in  series of experiments
-		○ Tests as a falsification mechanism
-		○ Make decisions based on evidences
-		○ Have a faster feedback model.
-		○ What measurements make sense and how can we collect them ?
-		○ Take control of the variables
-		○ Being experimental : TDD to have a scientific method.
-		○ design, develop, test, release
-		○ CD: applies ideas from science to software development, A software engineering discipline, is an engineering practice for solving problems in software.
-			
-	• Deployment pipeline
-		○ From "commit" to "releasable" outcome
-		○ Objective: to reject changes that are not fit for production, discard release candidates on any failing test
-		○ It’s a "lean" approach
-		○ We aim for maximum impact from least work
+Core Concepts - Tables, Items, Attributes, Indexes
+	• Tables is a collection of items.
+	• Items are collections of attributes or Key/value pairs.
+	• Primary Key is combination of Partition Key and Sort Key.
+	• Attributes are arbitratorary pairs of Keys and values in the form of json or any format.
+	• Indexes  (Global secondary Index) (Local Secondary Index)
 
+Table can have capacity
+Read mode (Read capacity Units)
+Write mode (Write Capacity Units)
 
-Why CD:
-	• Allows us to create high quality software more efficiently.
-	• DORA
-	• Stability and through put and correlative model, deliver the software faster. Less time on rework nad less time to production failures and optimizing for learning.
-	
-Impact of Business :
-	• Cultural impact :
-		○ Does your org attract innovators ?
-		○ Can it react quickly to change ?
-		○ Is your staff engaged and enthusiastic ?
+Global Tables: can be accessed in different zones. It can replicate the data out in different zones.
+
+Backups: 
+Point in time recovery
+On demand backups
+
+Exports and streams: we can export the data to S3 or has the capabilities to stream.
+
+PartiQL Editor used for querying stuffs.
 
 
 
-How do we make CD Happen? 
+DynamoDB need to have primary key
+It can have only Partition Key or a combination of Partition Key and Sort Key.
 
-	• Holistic Approach:
-		○ Technical Performance:
-			§ Build automation
-			§ Test automation
-			§ deployment automation
-			§ Deployment pipelines 
-			§ Architecture
-			§ Iterative design
-			§ Evidence based decisions
-			§ Infrastructure as code
-			§ Observability
-		○ Cultural performance:
-			§ Collaboration
-			§ Devops
-			§ Devsecops
-			§ Test approach/strategy
-			§ Dev and Qa collaboration  QA and prod
-		○ Organisational performance:
-			§ Experimental business
-			§ Product discovery and design
-			§ Continuous compliance
-			§ Release strategy
-			§ Team structure and organisation
-			§ Iterative planning
-			§ User focussed requirements
-		○ How to take holistic approach 
-			§ Levers of change:
-				□ Reduce cycle time
-				□ Automate nearly everything
-				□ Control the variables
-				□ Work in small steps
-				□ Make evidence based decisions
-				□ Work in small empowered teams
-				□ Apply agile and lean principles
-		○ Reduce Cycle Time:
-			§ A measure of efficiency of development approach
-			§ Imagine a single line change
-			§ How long will it make from idea to deploy ?
-			§ Our aim is to measure the efficiency of the process, not the ability to solve the problem.
-			§ Have a value stream analysis.
-			§ Cycle time as a tool:
-				□ Make experimental approach to making changes
-				□ Focus on incrementally reducing cycle-time
-				□ Look at all aspects of process to identify waste
-				□ Eliminate waste
-				□ Monitory cycle-time.
-			§ Common barriers of CD:
-				□ Manual testing
-				□ Slow builds
-				□ Slow deployment
-				□ Dependency management
-				□ Data migration
-			§ Lead time is from time to commit till prod.
-			§ Cycle time is from the time of requirements till prod.
-			§ Throughput = Leadtime * frequency
-			§ Reduce cycle-time:
-				□ Effective collaboration
-				□ Automation
-			
-		○ Commit to Acceptance: with below its easy for developers to facilitates CD
-			§ Fast feedback:
-			§ High confidence
-			§ Commit Tests:
-				□ TDD
-				□ Add tests to assert coding standards
-				□ Add fast tests to fail quickly
-			§ Successful commits creates release candidate:
-				□ A deployable unit of software.
-				□ Generate if all commit stage test pass
-				□ Have an artifact repository after versioning
-				□ Commit stage : Developer testing --> Unit tests, TDD
-				□ Acceptance stage: User testing --> Manual or user testing
-		○ Try to eliminate manual testing: should be exploratory, test usability , not appropriate for regressing testing.
-		○ Component based performance testing:
-			§ Measure the performance of unit tests to check the throughput and latency for performance critical components
-		○ System based performance testing:
-			§ A production simulation tests: test life like scenarios and combinations of scenarios. Implement as Threshold-based.
-	• Deployment pipeline automation offers:
-		○ High quality feedback
-		○ Confidence in our changes
-		○ Visibility of progress
-		○ Reduced risk
-		○ Increased efficiency
-	• Frequent production release offers:
-		○ Feedback on effectiveness of our products
-		○ Lower risk of production regression
-		○ More effective, more agile business
-	• Control the variables:
-		○ Version control
-		○ Configuration management
-		○ Automated testing
-		○ Continuous integration
-		○ Deployment automation
-		○ Blue/green deployment
-		○ A/B Testing
-		○ Canary releasing
-		○ Infrastructure as code
-	• Testable software: (Testability)
-		○ More modular
-		○ More loosely coupled
-		○ Has better separation of concerns
-		○ Higher cohesion
-		○ Better abstracted
-	• Software that is easy to deploy:(Deloyability)
-		○ Iaas
-		○ Demands effective configuration management
-		○ Has automated the deployment process
-	• Working in small steps:
-		○ Plans --> Actions --> outcome --> plans
-		○ Its not a compromise, its  a most effective approach
-		○ Requirements: specify small increments from the perspective of users
-		○ Continuous integration
-		○ Delivery continuously
-		○ Divide work into pieces
-		○ Try to break larger requirements into smaller parts
-		○ Design and develop incrementally
-		○ Improve in modularity
-		○ Optimize for learning
-	• Make evidence based decisions:
-		○ Make it simple : if test fails then no release
-		○ Stability and throughput: Monitor the progress by measuring quality and efficiency
-		○ Use this info to guide experiments in Process, tech and culture.
-		○ Work together to gather evidence to capture bad ideas quickly
-		○ Capture evidence using A/B testing
-		○ Canary releasing
-		○ Capture real performance results from production to inform testing
-	• Use autonomous Team:
-		○ Enables flow
-		○ More efficient decision making
-		○ More experimental
-		○ Effective comms
-	• Agile in practice:
-		○ Lean thinking (Max out for min in)
-			§ Deliver fast
-			§ Build quality 
-			§ Optimize the whole
-			§ Eliminate waste
-			§ Keep "out of cycle" work "inline"
-			§ Amplify learning
-			§ Decide late
-			§ Empower the team
-		○ Agile Principles:
-			§ Individuals and interactions over process and tools
-			§ Working software over comprehensive documentation
-			§ Customer collaboration over contract negotiation
-			§ Responding to change over following a plan
-			
-				
+Dynamo will internally divide the data into partitions, it will be very easy to get into that partitions and fetch result.
+
+Sort Key: data will be sorted in the partitions it should be globally unique.
+
+When to use what key ? 
+Are u always doing quick lookups of a known key, and is it globally unique ? Then use partition key.
+Is your key non-unique, or do u want to do range-like queries based of some other value ?
+Use partition key + sort key.
+
+Other strategies:
+Prefixes/Suffixes, composed partition keys, DynamoDB accelerator (DAX)
 
 
-14 Practices of CD:
-	1. Releasability: Capabilities to release changes once to PROD  --> 3
-	2. Deployment Pipeline:  includes all the tests and steps that is sufficient to determine the releasibility --> 4
-	3. Continuous Integration: CI and safely commit small changes multiple times per day --> 3
-	4. Trunk based development: we do not hide work on separate branches for longer than a working day. (Feature branches) --> 3
-	5. Small Autonomous teams: share responsibility for writing and testing code, and deployment to PROD. --> 3
-	6. Informed decision Making: has visibility and control of process and data can make informed decisions on technical choices, design and releasability of code. --> 4
-	7. Small Steps: we grow our code incrementally and making frequent small changes to our code. --> 3
-	8. Fast Feedback: We get faster feedback for every change. --> 3
-	9. Automated Testing: automate almost everything in deployment pipeline, do not have any way to have a manual testing. (ATDD/BDD) --> 3
-	10.  Version Control: we make all changes to code, test, infrastructure, configuration and ultimately production via version control. --> 4
-	11. One Route to Production: All changes flow through the pipeline.  --> 3
-	12. Traceability: The CD should give the complete traceability of all steps in the sdlc. --> 1
-	13. Automated Deployment: we can deploy our changes into prod, or any env, at a touch of button. --> 3
-	14. Observability: monitor the changes to determine the success of change. Have SLO,SLI. --> 5
-	
-	
-
-DDD
-lean enterprise
-refractoring
-
-Achieve repeatability and reliability
-Applying scientific principles 
-The Deployment Pipeline
-Reducing the Cycle Time
-Automated Testing
-Automation - Release to Production
-Controlling the Variables
-Working in Small Steps
-Making Evidence-based Decisions
-Working in Small Autonomous Teams
-Agility in Practice
-
-contract testing
-pact 
-specmatic
-
-7 techniques to establish CD:
-	• Reduce cycle time
-	• Automate nearly everything
-	• Control the variables
-	• Work in small steps
-	• Make evidence based decisions
-	• Work in small, empowered teams
-	• Apply agile and lean principles 
-
-https://courses.cd.training/
-
-Acceptance Stage:
-	• Evaluates changes from the perspective of users
-	• Shifts from technical focus to focus on release candiates
-	• Life like scenarios
-	• Production like test environment
-	• Incorporate acceptance testing into the dev process
-	• Executable specifications for desired behaviors
-	• Automate the provisioning of test environments
-	• Automate deployment
-	• Ensure the release candidate is ready for testing
-	• Automate the collection of results
-	
-	
-
-We work in large batches:
-How to go from big batches to small frequent steps
-
-	• Inability to work incrementally
-		○ Feedback first
-		○ Dump the branches
-	
-	• Too much wip/backlogs
-		○ Dump the backlog
-		○ Triage the tactical
-	• Large scope/large batches
-		○ Value!=valuable
-		○ Feedback first
-		
-	• Long release cycle, so fit more stuff in > large batches
-		○ Feedback first
-		○ Small steps
-		○ Value != valuable
-		○ Do the maths
-	• Stressful releases
-		○ Automate config management
-		○ Automate release
-		○ Adopt in hours release
-	• Long release
-		○ Optimize deployment
-		○ optimize data migration
-		○ Eliminate manual steps
-
-Simple Deployment Pipeline: commit --> TEST --> Artifactory --> acceptance Test --> deploy
-
-The development environment:
-	• Make it faster and efficient
-	• Good connectivity
-	• Simple setup (One step checkout)
-	• Can run any test
-	• Can deploy whole system locally
-
-Version control:
-	• Version control nearly everything.
-		○ Source code
-		○ Environment config
-		○ Build dependencies
-		○ Runtime dependencies
-		○ OS version
-	• Infrastructure as Code
-		○ Automate the versioning of infrastructure
-		○ Env in which your software runs is a dependency of your system
-		○ Systems should be disposable
-		○ Systems should be easy to reproduce
-		○ Process should be repeatable
-		○ Systems are always changing
-	• We can have feature branch within one day then its ok but not more than that.
-	• Merging frequently will avoid merge conflicts.
-	• Working on origin/master would be the right way
-
-Commit Stage:
-	• Compile
-	• Unit test 
-	• Analysis
-	• Build installers
-	• Feed back under 5 mins.
-	• Eliminate if the test cases fails.
-	• Vast majority of testing should be unit tests, other assert coding standards and static analysis etc…
-
-CI Strategies:
-	• Wait for changes to fail, start fixing post breaking
-	• Its a committer responsible to fix the code if there is any failure.
-	
-TDD:
-	• The fragile code:
-		○ Tiny mistakes can have big impacts
-		○ Dual path verification is needed to handle fragile code.
-	• Express intent in the form of Test
-	• Test the test by running it n seeing it fail.
-	• Create a mini code that meets and makes the test  pass
-	• Start refractoring, have a clean code.
-	• RED --> GREEN --> REFRACTOR Technique.
-	• Impact of code quality:
-		○ It works
-		○ Its easy to read
-		○ Testable
-		○ Easy to change
-		○ Simple
-		○ Efficient
-	• Attributes of good code:
-		○ Modular
-		○ Loosely coupled
-		○ Cohesive
-		○ Separation of concerns
-		○ Information hiding
-
-Goals of artifactory:
-	• Output of successful commit is deployable unit of software
-	• Artifact is the home for release candidates
-	• Assemble and package the release candidate
-Artifact repository techniques:
-	• Use the same deployment mechanism wherever you deploy.
-	• Separate any env specific config from release candidates.
-	• Dump RCs that fail any tests
-	• Discard RCs that fail acceptance stage
-	• Periodically purge RCs that don’t make into prod.
-	• Keep only the once which has made to prod.
-	• Assign each RC a unique ID
-	• Ideal would be some incremental sequence no.
-	
-	
+How GSI work ?
+You as a user define a GSI Index - This involves selecting a new Partition Key. (We can configure this in the DynamoDB in AWS)
+Creating a GSI clones your primary table using your new Partition Key, but keeps these two tables in sync.
+Your GSI table plays by the same rules as a normal Dynamo Table
+	1. GSI Partition Key requires uniform data distribution.
+	2. Define RCU/WCU capacity separately on the Index.
+	3. Throttling.
+We can have maximum of 20 GSI.
+Writes to the main table are eventually replicated on the GSI.
 
 
+LSI: To define the index to apart from the other parition or sort key. 
 
-What is Performance?
-	• Throughput
-	• Latency
-	• Usability under stress
+LSI Imitations :
+Can only define a LSI at table creation time.
+Limited to 5 LSIs
+No extra cost.
 
-Problems of performance testing ?
-	• Controlling variables is difficult
-	• Results are often inconsistent
-	• Its usually quite often complex
-
-Did my changes slow down the apps?
-Will my app handle the latency ?
-	• Component level performance testing
-		○ Test under isolation
-		○ Measure throughput and latency
-		○ Establish PASS/FAIL tests based on threshold values
-	• System level performance testing:
-		○ Evaluate performance in a natural mix of behaviours
-		○ We are looking for unexpected problems
-		○ Record or simulate normal patterns of use
-		○ Measure performance of the scenarios.
-		○ Establish PASS/FAIL tests
-		○ Automate monitoring of production performance
-		○ Use to validate system testing 
-		○ Use DSL to define scenarios
-		○ Combine scenarios to form naturalistic mix
-		○ Measure timings
-		○ Simulate load by running tests in parallel
-		○ Eliminate long running tests.
-
-NFRs to Test:
-	• Stability:
-		○ Consider reusing the system preformance env
-		○ Progressively scale up load
-		○ Monitor the signs of stress
-		○ Run periodically not necessary every commit
-	• Resilience
-	• Fault tolerance
-	• Security :
-		○ Compliance and regulation
-		○ Provenance of dependencies
-		○ Create automated tests for security behaviours
-		○ Team responsibility
-	• Disaster recovery
-	
-	
+Why to use autoscaling ?
+RCU and WCU
+Consumed capacity & Provisioned Capacity.
 
 
-Our Legacy systems is hard to change:
-	• Poorly understood, old code
-		○ Refactor the code
-		○ Adopt approval testing
-	• Legacy system can't do automated testing
-		○ Not necessarily true, it should be still doable.
-	• Technical debt not understood, acknowledged, prioritized 
-		○ Tidy the code, adopt more testing
-	• Technical evolution
-		○ Adoption of containerization techniques
-		○ Always keep upgrading the systems with modern infrastructure/code.
-	• Stuck with legacy system/inflexible architecture
-		○ Adopt tactical approach
-		○ Add more test cases which acts as an anti corruption layer.
-		○ Isolate the business logic
-	• How to modify legacy code/system safely
-		○ Add anti corruption layer around the existing code by adding the test cases, do not change the logic just try to refractor ensure the tests are not broken. Then start making the code changes.
+What is a Dynamo DB stream ?
+Feature that emits events when record modifications occur on a dynamo DB table.
+Events can be of types INSERT, UPDATE and REMOVE
+Events can carry the content of the row(s) being modified.
+Events are guaranteed to be in the same order the modification took place.
 
-TDD: Was invented in late 1960s 
-TDD == Test first
+Dynamo DB stream use cases ?
+Real time dashboards.
+Data replication for fuzzy searches.
 
-Structured test around
-Given when then
+Features 
+	• Guaranteed, in order events
+	• Customizable events - Keys only, New Image, Old Image, New and Old images
+	• Batch processing
+	• No Performance impact on source table
+	• Super easy integration with AWS Lambda functions
 
-
+How it works ?
+ Change events  occurs a sequence is assigned --> Polls 4 times/sec/shard
