@@ -1,89 +1,34 @@
-Managed NoSQL database optimized for performance at scale.
-High availability and durability.
-Ideal for apps with Known access patterns.
-Access through APIs/ORMs and authorized through IAM.
-Integrates well with other AWS Services.
-Cost Effective usage based payment model.
+	• Messaging Publishing and processing Service (PubSub)
+	• Allows fanout to millions of consumers (Email, HTTP, SQS, texting)
+	• Fully managed and durable with automatic scaling.
+	• Consists of topics and subscriptions
+	• Application to person or application to application
+	
+	
+NAT Gateway:
+NAT sits in Public subnet. 
+Route table will be present in both Public and private subnet (It translates from destination to target)
 
-
-Core Concepts - Tables, Items, Attributes, Indexes
-	• Tables is a collection of items.
-	• Items are collections of attributes or Key/value pairs.
-	• Primary Key is combination of Partition Key and Sort Key.
-	• Attributes are arbitratorary pairs of Keys and values in the form of json or any format.
-	• Indexes  (Global secondary Index) (Local Secondary Index)
-
-Table can have capacity
-Read mode (Read capacity Units)
-Write mode (Write Capacity Units)
-
-Global Tables: can be accessed in different zones. It can replicate the data out in different zones.
-
-Backups: 
-Point in time recovery
-On demand backups
-
-Exports and streams: we can export the data to S3 or has the capabilities to stream.
-
-PartiQL Editor used for querying stuffs.
+Route 53: It’s a dns naming convention meant for having unique identifier for the application. Which helps In routing the network traffic.
 
 
 
-DynamoDB need to have primary key
-It can have only Partition Key or a combination of Partition Key and Sort Key.
-
-Dynamo will internally divide the data into partitions, it will be very easy to get into that partitions and fetch result.
-
-Sort Key: data will be sorted in the partitions it should be globally unique.
-
-When to use what key ? 
-Are u always doing quick lookups of a known key, and is it globally unique ? Then use partition key.
-Is your key non-unique, or do u want to do range-like queries based of some other value ?
-Use partition key + sort key.
-
-Other strategies:
-Prefixes/Suffixes, composed partition keys, DynamoDB accelerator (DAX)
+Load balancer:
 
 
-How GSI work ?
-You as a user define a GSI Index - This involves selecting a new Partition Key. (We can configure this in the DynamoDB in AWS)
-Creating a GSI clones your primary table using your new Partition Key, but keeps these two tables in sync.
-Your GSI table plays by the same rules as a normal Dynamo Table
-	1. GSI Partition Key requires uniform data distribution.
-	2. Define RCU/WCU capacity separately on the Index.
-	3. Throttling.
-We can have maximum of 20 GSI.
-Writes to the main table are eventually replicated on the GSI.
+
+Waf: web application firewall:
+It allows u to monitor HTTP and HTTPS request that are forwarded to amazon cloudfornt, app load banancer or api gateway. It also allows you to control access to your content.
+It can be used for protection of services from other providers, but your app/content has to be served through the cloudfront.
+It can have configurations such as what IP addresses are allowed to make these request or what query string parameters need to be passed for the request to be allowed. 
+
+Basice level behaviours:
+Allow all the request excepti the ones you specify
+Block all th request except the ones you specify
+Count the request that match the properties that you specify
 
 
-LSI: To define the index to apart from the other parition or sort key. 
-
-LSI Imitations :
-Can only define a LSI at table creation time.
-Limited to 5 LSIs
-No extra cost.
-
-Why to use autoscaling ?
-RCU and WCU
-Consumed capacity & Provisioned Capacity.
+Proections against
+Sql inection, XSS, DDOS, 
 
 
-What is a Dynamo DB stream ?
-Feature that emits events when record modifications occur on a dynamo DB table.
-Events can be of types INSERT, UPDATE and REMOVE
-Events can carry the content of the row(s) being modified.
-Events are guaranteed to be in the same order the modification took place.
-
-Dynamo DB stream use cases ?
-Real time dashboards.
-Data replication for fuzzy searches.
-
-Features 
-	• Guaranteed, in order events
-	• Customizable events - Keys only, New Image, Old Image, New and Old images
-	• Batch processing
-	• No Performance impact on source table
-	• Super easy integration with AWS Lambda functions
-
-How it works ?
- Change events  occurs a sequence is assigned --> Polls 4 times/sec/shard
